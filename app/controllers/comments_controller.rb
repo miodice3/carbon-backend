@@ -1,8 +1,12 @@
 class CommentsController < ApplicationController
 
     def create
-        byebug
-        comment = Comment.create(comment_params)
+        
+        comment = Comment.new do |u|
+            u.fed_id = comment_params[:id]
+            u.comment = comment_params[:comment]
+        end
+        comment.save
     end
 
     def index
@@ -11,14 +15,10 @@ class CommentsController < ApplicationController
         render json: comments
     end
 
-    # def show
-    # end
-
     private
 
     def comment_params
-        byebug
-        params.require(:comment).permit(:fedid, :comment)
+        params.require(:comment).permit(:id, :comment)
     end
 
 end
