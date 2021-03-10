@@ -10,8 +10,13 @@ class CommentsController < ApplicationController
     end
 
     def index
-        byebug
+        # byebug
         comments = Comment.all
+        render json: comments
+    end
+
+    def show
+        comments = Comment.where(fed_id: params[:id])
         render json: comments
     end
 
