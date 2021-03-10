@@ -6,6 +6,7 @@ class CommentsController < ApplicationController
     end
 
     def index
+        byebug
         comments = Comment.all
         render json: comments
     end
@@ -16,6 +17,7 @@ class CommentsController < ApplicationController
     private
 
     def comment_params
+        byebug
         params.require(:comment).permit(:fedid, :comment)
     end
 
